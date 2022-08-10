@@ -27,3 +27,8 @@ You may not reproduce copyright images without their owner'self permission,
 except in "fair use" cases,
 or you could risk running into lawyer'self warnings, cease-and-desist letters, and copyright suits.
 Please be very careful before its usage! Use this script/code only for educational purposes.
+
+Update
+==========
+
+changing in the coding protocol from 'utf-8' to 'latin_1' so now the lib is able to support all special characters such as "ç", or letters accented with "´", "^", etc.
