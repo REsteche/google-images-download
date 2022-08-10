@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # In[ ]:
-#  coding: utf-8
+#  coding: latin_1
 
 ###### Searching and Downloading Google Images to the local disk ######
 
@@ -183,7 +183,7 @@ class googleimagesdownload:
         start_object = page.find('[', start_line + 1)
         end_object = page.rfind(']',0,page.find('</script>', start_object + 1))+1
         object_raw = str(page[start_object:end_object])
-        return bytes(object_raw, "utf-8").decode("unicode_escape")
+        return bytes(object_raw, "latin_1").decode("unicode_escape")
 
     def _extract_data_pack_extended(self, page):
         start_line = page.find("AF_initDataCallback({key: 'ds:1'") - 10
@@ -432,7 +432,7 @@ class googleimagesdownload:
             raise e
         except OSError as e:
             raise e
-        print("completed ====> " + image_name.encode('raw_unicode_escape').decode('utf-8'))
+        print("completed ====> " + image_name.encode('raw_unicode_escape').decode('latin_1'))
         return
 
     def similar_images(self, similar_images):
@@ -560,11 +560,11 @@ class googleimagesdownload:
         elif specific_site:
             url = 'https://www.google.com/search?q=' + quote(
                 search_term.encode(
-                    'utf-8')) + '&as_sitesearch=' + specific_site + '&espv=2&biw=1366&bih=667&site=webhp&source=lnms&tbm=isch' + params + '&sa=X&ei=XosDVaCXD8TasATItgE&ved=0CAcQ_AUoAg'
+                    'latin_1')) + '&as_sitesearch=' + specific_site + '&espv=2&biw=1366&bih=667&site=webhp&source=lnms&tbm=isch' + params + '&sa=X&ei=XosDVaCXD8TasATItgE&ved=0CAcQ_AUoAg'
         else:
             url = 'https://www.google.com/search?q=' + quote(
                 search_term.encode(
-                    'utf-8')) + '&espv=2&biw=1366&bih=667&site=webhp&source=lnms&tbm=isch' + params + '&sa=X&ei=XosDVaCXD8TasATItgE&ved=0CAcQ_AUoAg'
+                    'latin_1')) + '&espv=2&biw=1366&bih=667&site=webhp&source=lnms&tbm=isch' + params + '&sa=X&ei=XosDVaCXD8TasATItgE&ved=0CAcQ_AUoAg'
 
         # safe search check
         if safe_search:
@@ -586,7 +586,7 @@ class googleimagesdownload:
     # keywords from file
     def keywords_from_file(self, file_name):
         search_keyword = []
-        with codecs.open(file_name, 'r', encoding='utf-8-sig') as f:
+        with codecs.open(file_name, 'r', encoding='latin_1') as f:
             if '.csv' in file_name:
                 for line in f:
                     if line in ['\n', '\r\n']:
@@ -938,7 +938,7 @@ class googleimagesdownload:
                         paths_agg[i] = paths[i]
                     if not arguments["silent_mode"]:
                         if arguments['print_paths']:
-                            print(paths.encode('raw_unicode_escape').decode('utf-8'))
+                            print(paths.encode('raw_unicode_escape').decode('latin_1'))
                     total_errors = total_errors + errors
                 return paths_agg, total_errors
             # if the calling file contains params directly
@@ -948,7 +948,7 @@ class googleimagesdownload:
                     paths_agg[i] = paths[i]
                 if not arguments["silent_mode"]:
                     if arguments['print_paths']:
-                        print(paths.encode('raw_unicode_escape').decode('utf-8'))
+                        print(paths.encode('raw_unicode_escape').decode('latin_1'))
                 return paths_agg, errors
         # for input coming from CLI
         else:
@@ -957,7 +957,7 @@ class googleimagesdownload:
                 paths_agg[i] = paths[i]
             if not arguments["silent_mode"]:
                 if arguments['print_paths']:
-                    print(paths.encode('raw_unicode_escape').decode('utf-8'))
+                    print(paths.encode('raw_unicode_escape').decode('latin_1'))
         return paths_agg, errors
 
     def download_executor(self, arguments):
@@ -1056,7 +1056,7 @@ class googleimagesdownload:
                     iteration = "\n" + "Item no.: " + str(i + 1) + " -->" + " Item name = " + (pky) + (
                     search_keyword[i]) + (sky)
                     if not arguments["silent_mode"]:
-                        print(iteration.encode('raw_unicode_escape').decode('utf-8'))
+                        print(iteration.encode('raw_unicode_escape').decode('latin_1'))
                         print("Evaluating...")
                     else:
                         print("Downloading images for: " + (pky) + (search_keyword[i]) + (sky) + " ...")
